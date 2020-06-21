@@ -1,17 +1,18 @@
 <template>
-<v-card 
 
-tile
-
->
    <v-container fluid  >
-          <v-row no-gutters >
-        <v-col cols="3" >
+          <v-row no-gutters 
+              
+              class="flex  fill-height dark-gray"
+              
+           >
+        <v-col cols="3" class="flex" >
           <v-card
             class="pa-0"
             
             tile
             flat
+           
           >
             <v-img
           alt="boulotman Logo"
@@ -24,12 +25,12 @@ tile
     
           </v-card>
         </v-col>
-        <v-col cols="3">
+        <v-col cols="3"  class="flex">
           <v-card
             class="pa-0"
             flat
             tile
-           
+         
           >
         <v-card-text class="justify-center"><h2 class="text-decoration-underline"><I>Socials</I></h2></v-card-text>
         <v-list-item-group class="justify-center">
@@ -44,21 +45,22 @@ tile
 
         </v-col>
 
-        <v-col cols="3">
+        <v-col cols="3" class="flex">
           <v-card
-            class="mx-auto"
+            class="mx-auto "
           flat
             tile
-            
+             
           >
               
          <v-card-text class="justify-center"><h2 class="text-decoration-underline"><I>Usefull Links</I></h2></v-card-text>
-    <v-list-item-group class="justify-center">
+    <v-list-item-group class="justify-center flex-column">
             <p class="v-list-item--link"><v-icon size="24px" left>mdi-book-open-page-variant</v-icon>About Us</p>
           <p class="v-list-item--link"><v-icon size="24px" left>mdi-home-circle</v-icon>Home</p>
           <p class="v-list-item--link"><v-icon size="24px" left>mdi-shield-lock-outline</v-icon>Privacy Policy</p>
            <p class="v-list-item--link"><v-icon size="24px" left>mdi-electron-framework</v-icon>Services</p>
            <p class="v-list-item--link"><v-icon size="24px" left>mdi-book-open</v-icon>Terms & Conditions</p>
+           
     </v-list-item-group>
        
         
@@ -67,12 +69,11 @@ tile
           </v-card>
           
         </v-col>
-        <v-col cols=3>
+        <v-col cols=3  class="flex">
           <v-card
-            class="pa-1"
+            class="pa-0"
             flat
             tile
-            
            
           >
        <v-card-text class="justify-center"><h2 class="text-decoration-underline"><I> Our Contacts</I></h2></v-card-text>
@@ -84,19 +85,18 @@ tile
           </v-card>
          
         </v-col>
-    </v-row>
+    </v-row >
 
       <v-divider class="pa-1" ></v-divider>
-      <v-row>
-          <v-col cols="12">
+      <v-row   class="flex  fill-height">
+          <v-col cols="12" class="flex- ">
           <v-card
-            class=" ma-n4"
+            class=" ma-0 pa-0 "
             flat
             tile
-            
            
           >
-       <v-card-text class="text-center"><h2 class="text-decoration-underline">{{ new Date().getFullYear() }} — 
+       <v-card-text class="text-center cyan lighten-4"><h2 class="text-decoration-underline">{{ new Date().getFullYear() }} — 
          <strong>All Rights Reserved</strong></h2></v-card-text>
          
         
@@ -108,7 +108,6 @@ tile
  
   </v-container>
 
-</v-card>
 </template>
 
 <style scoped>

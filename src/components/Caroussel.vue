@@ -1,6 +1,11 @@
 <template>
- <div class="caroussel">
-    <v-carousel hide-delimiters cycle>
+<v-layout fill-height="true">
+
+            <v-carousel hide-delimiters cycle   dark="true"
+     height="500"
+     interval="4000"
+    
+     >
     <v-carousel-item
       v-for="(item,i) in items"
       :key="i"
@@ -8,46 +13,52 @@
       :title="item.title"
       reverse-transition="fade-transition"
       transition="fade-transition"
+      class="flex fill-height"
     >
      <v-row
           class="fill-height"
           align="center"
           justify="center"
         >
-          <div class="display-2">{{ item.title }}</div>
+          <div class="display-1 text-uppercase justify-center align-center">{{ item.title }}
+            <div class=" justify-center align-center"><router-link to="/contact">Contact US</router-link></div>
+          </div>
+         
         </v-row>
-    </v-carousel-item>
     
-  </v-carousel>
- </div>
+         
+    </v-carousel-item>
+
+      </v-carousel>
+
+</v-layout>
+
+ 
 
 </template>
 
 <script>
+
   export default {
       name:'Caroussel',
+      components:{
+       
+      },
     
     data () {
       return {
         items: [
-          {
-            src: require('../assets/boulotmanlogo.png'),
-            title: "BIENVENU CHEZ BOULOTMAN"
-          },
+
           {
             src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
-            title: "LA NATURE DU TRAVAIL"
+            title: "Contact us here"
           },
+      
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
-            title: "DES TRAVAILLEURS QUALIFIES"
+            src: require('../assets/banniere.png'),
+            title: "Contact us here"
           },
-          {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
-            title: "PRENONS TOUT EN MAIN"
-            
-    
-          },
+        
         ],
       }
     },

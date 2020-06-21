@@ -1,20 +1,14 @@
 <template>
   <v-app >
+  <NavBar/>
+  <v-main >
 
-    <v-main>
-    <v-app-bar  flat>
-      <Header/>
-    </v-app-bar>
-    <!-- Provides the application the proper gutter -->
-      
-        <router-view></router-view>
-      
-     
-      
-    </v-main>
-
- <v-footer><Footer> </Footer></v-footer>
-  
+      <router-view></router-view>
+    
+  </v-main>
+  <v-footer >
+    <Footer> </Footer>
+  </v-footer>
   </v-app>
 </template>
 
@@ -22,7 +16,7 @@
 
  
 import Footer from './components/Footer'
-import Header from './components/Header'
+import NavBar from './components/NavBar'
 
 
 
@@ -32,7 +26,7 @@ export default {
   components: {
    
     Footer,
-    Header
+    NavBar
  
   },
 

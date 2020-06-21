@@ -1,11 +1,11 @@
 <template>
-<v-content>
-  <v-container fluid>
+<v-container>
+  <v-layout fill-height="true">
         <v-row>
         <v-col>
           <v-card
-            class="pa-2"
-            outlined
+            class="pa-2 ma-2"
+            
             tile
             color="blue lighten-2"
           >
@@ -13,12 +13,12 @@
           </v-card>
         </v-col>
     </v-row>
-  </v-container>
+  </v-layout>
 
   <v-spacer></v-spacer>
-  <v-container fluid>
+  <v-layout fill-height="true" >
     <v-row dense >
-    <v-col cols="3" 
+    <v-col cols="2" 
     v-for="category in categories"
     :key="category.id">
       <v-card outlined shaped class="mx-auto">
@@ -40,24 +40,24 @@
           </v-card>
             </v-col>
           </v-row>
-  </v-container>
+  </v-layout>
 
   <v-spacer></v-spacer>
-  <v-container fluid>
+  <v-layout >
         <v-row>
         <v-col>
           <v-card
-            class="pa-2"
+            class="pa-2 ma-2"
             outlined
             tile
             color="blue lighten-2"
           >
-         <h1 class="text-center">SERVICES</h1>
+         <h1 class="text-center font-weight-bold">SERVICES</h1>
           </v-card>
         </v-col>
     </v-row>
-  </v-container>
-       <v-container fluid>
+  </v-layout>
+       <v-layout >
     <v-row dense >
     <v-col cols="2" 
     v-for="category in categories"
@@ -81,8 +81,9 @@
           </v-card>
             </v-col>
           </v-row>
-  </v-container>
-</v-content>
+  </v-layout>
+</v-container>
+
 </template>
 
 <script>
