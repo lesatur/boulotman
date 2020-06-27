@@ -1,7 +1,7 @@
 <template>
 
   <v-container fluid>
-          <v-row no-gutters 
+          <v-row 
               
               class="flex  justify-space-between green "
               

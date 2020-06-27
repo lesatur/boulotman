@@ -1,10 +1,14 @@
-<template>
-<v-flex >
+<template >
+
+  <div class="flex " >
+
 <Caroussel/>
- <Categories></Categories>
+<Categories></Categories>
   
- <Book></Book>
-</v-flex>
+ <Book ></Book>
+ 
+
+  </div>
 </template>
 
 <script>
@@ -13,13 +17,18 @@
 import Caroussel from '../components/Caroussel'
 import Categories from '../components/Categories';
 import Book from '../components/Book';
+
 export default {
+  
+
   name: 'Home',
   components: {
     Book,
     Caroussel,
-    Categories
-  }
+    Categories,
+    
+  },
+ 
 }
 </script>
 

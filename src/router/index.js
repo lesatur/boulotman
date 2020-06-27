@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Services from '../views/Services.vue'
+import AllServices from '../views/AllServices.vue'
 
 
 
@@ -10,7 +12,22 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+   
+  },
+  {
+    path: '/categories/:id',
+    name: 'categories',
+    component: Services,
+    params: true
+   
+  },
+  {
+    path: '/allservices',
+    name: 'allservices',
+    component: AllServices,
+   
+   
   },
 
   {
@@ -23,7 +40,7 @@ Vue.use(VueRouter)
   },
   {
     path: '/categories',
-    name: 'categories',
+    name: 'categorie',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -38,6 +55,7 @@ Vue.use(VueRouter)
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
+
   {
     path: '*',
     name: 'notfound',
@@ -49,7 +67,7 @@ Vue.use(VueRouter)
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+ mode: 'history',
   routes
 })
 

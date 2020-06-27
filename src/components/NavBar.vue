@@ -1,13 +1,13 @@
 <template>
-
-       <v-container fluid>
+<v-container fluid>
+   
                 <v-app-bar app  dark fade-img-on-scroll
-                
-               
                prominent
-               src="../assets/banniere.png"
+              clipped-left
+               src="../assets/tree-nature-isolated-lone-free-photo-on-pixabay-png-nature-960_650.png"
                hide-on-scroll
-               height="180"
+               height="100"
+               
               
              
                 >
@@ -19,7 +19,7 @@
           contain
           src="../assets/boulotmanlogo.png" 
           transition="scale-transition"
-          width="160"
+          width="100"
     />
     
     <v-spacer></v-spacer>
@@ -28,7 +28,7 @@
           <v-toolbar-title class="hidden-sm-and-down justify-space-between ">
         
       <v-btn to="/">Home</v-btn>
-      <v-btn to="/around" >autour de moi</v-btn>
+      <v-btn to="/services" >SERVICES</v-btn>
       <v-btn  to="/about">ABOUT US</v-btn>
       <v-btn  to="/categories">CATEGORIES</v-btn>
       <v-btn to="/about">Blog</v-btn>
@@ -38,38 +38,38 @@
   <v-spacer></v-spacer>
 
          
-         <v-btn rounded="true" @click="toggleTheme" color="primary" class="mr-2">{{buttonText}}</v-btn>
+         <v-btn rounded @click="toggleTheme" color="primary" class="mr-2">{{buttonText}}</v-btn>
 
      </v-app-bar>
 <v-card>
   <v-navigation-drawer 
           v-model="sidebarMenu" 
           app
-          floating
+         fixed
+         clipped
           :permanent="sidebarMenu"
-          :mini-variant.sync="mini"
-          disable-resize-watcher="true"
-          disable-route-watcher="true"
-          expand-on-hover="true"
-          overlay-opacity="1.7"
-          color="cyan lighten-4 "
-          class=" flex fill-height"
+         
+          disable-resize-watcher
+          disable-route-watcher
+          expand-on-hover
+         
+          class=" flex fill-height brown"
           
           
          
           
           
           >
-            <v-list>
+            <v-list dense class="pt-3">
 
                
                 <v-list-item v-for="item in items" :key="item.title" link :to="item.href">
                     <v-list-item-icon>
-                        <v-icon color="primary">{{ item.icon }}</v-icon>
+                        <v-icon >{{ item.icon }}</v-icon>
                     </v-list-item-icon>
                 
                     <v-list-item-content>
-                        <v-list-item-title class="primary--text">{{ item.title }}</v-list-item-title>
+                        <v-list-item-title >{{ item.title }}</v-list-item-title>
                     </v-list-item-content>
 
                     
@@ -144,7 +144,9 @@
   </v-card>
     </v-navigation-drawer>
 </v-card>
-       </v-container>
+    
+</v-container>
+  
 
 </template>
 

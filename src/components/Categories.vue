@@ -1,124 +1,88 @@
 <template>
-<v-container>
-  <v-layout fill-height="true">
-        <v-row>
-        <v-col>
-          <v-card
-            class="pa-2 ma-2"
+<v-layout>
+  <v-container>
+  
+      <v-row>
+        <v-col cols="12">
+          <div class="flex justify-center"
+          >
+         <h1 class="categories"> CATEGORIES</h1>
+          </div>
+        </v-col>
+    </v-row>
+  <v-spacer></v-spacer>
+  
+    <v-layout class="justify-space-between flex">
+      <v-flex >
+        <v-row dense>
             
-            tile
-            color="blue lighten-2"
-          >
-         <h1 class="text-center">DIFFERENTS CATEGORIES</h1>
-          </v-card>
-        </v-col>
-    </v-row>
-  </v-layout>
-
-  <v-spacer></v-spacer>
-  <v-layout fill-height="true" >
-    <v-row dense >
-    <v-col cols="2" 
-    v-for="category in categories"
-    :key="category.id">
+    <v-col  cols="4"
+    v-for="categorie in categories"
+    :key="categorie.id">
       <v-card outlined shaped class="mx-auto">
   
     <v-img
       class="align-center"
-      :src="category.src"
+      :src="categorie.image"
       height="190px"
     ></v-img>
               <v-card-text class="text-center">
-                <p>{{category.title}}</p>
-                  <p>{{category.description}}</p>
+                <p><strong>{{categorie.name}}</strong></p>
+                  <p>{{categorie.description}}</p>
               </v-card-text>
               <v-card-actions>
                 <div class="text-center mx-auto">
-                  <v-btn rounded color="teal accent-3" >EXPLORE</v-btn>
+                  
+                  <router-link :to="{name: 'categories', params:{id:categorie.id}}">
+                    <v-btn rounded color="teal accent-3" >EXPLORE</v-btn>
+                    </router-link>
                 </div>
               </v-card-actions>
           </v-card>
             </v-col>
+          
           </v-row>
-  </v-layout>
+      </v-flex>
 
-  <v-spacer></v-spacer>
-  <v-layout >
-        <v-row>
-        <v-col>
-          <v-card
-            class="pa-2 ma-2"
-            outlined
-            tile
-            color="blue lighten-2"
-          >
-         <h1 class="text-center font-weight-bold">SERVICES</h1>
-          </v-card>
-        </v-col>
-    </v-row>
-  </v-layout>
-       <v-layout >
-    <v-row dense >
-    <v-col cols="2" 
-    v-for="category in categories"
-    :key="category.id">
-      <v-card outlined shaped class="mx-auto">
+    </v-layout>
+ 
   
-    <v-img
-      class="align-center"
-      :src="category.src"
-      height="190px"
-    ></v-img>
-
-              <v-card-text class="text-center">
-                  {{category.description}}
-              </v-card-text>
-              <v-card-actions>
-                <div class="text-center mx-auto">
-                  <v-btn rounded color="teal accent-3"  >Get Service</v-btn>
-                </div>
-              </v-card-actions>
-          </v-card>
-            </v-col>
-          </v-row>
-  </v-layout>
+ 
 </v-container>
+</v-layout>
 
 </template>
 
 <script>
+
+
   export default {
     name:'Categories',
-    data(){
-      return {
-        categories:[
-          {
-            id:1,
-            title: "title 1",
-            description: "description 1",
-            src:require("../assets/boulotmanlogo.png")
-          },
-          {
-               id:2,
-            title: "title 2",
-            description: "description 2",
-            src:require("../assets/boulotmanlogo.png")
-          },
-          {
-               id:3,
-            title: "title 3",
-            description: "description 3",
-            src:require("../assets/boulotmanlogo.png")
-          },
-          {
-               id:4,
-            title: "title 4",
-            description: "description 4",
-            src:require("../assets/boulotmanlogo.png")
-          }
-        ]
-      };
-    }
+mounted(){
+ this.$store.dispatch('loadCategories')
+        },
+computed: {
+  categories(){
+    return this.$store.state.categories
+  }
+},
+
+methods:{
+
+
+  },
+
+
     
   };
 </script>
+<style >
+.categories{
+  text-align: center;
+  text-justify: auto;
+  font-family: Lobster Two,cursive;
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 40px
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-<v-content>
+<v-flex>
   <div class="row" >
 <v-img  src="../assets/Perm2_ContactUs-1024x376.png" max-height="400px">
           <v-row align="end" class="lightbox white--text pa-2 fill-height">
@@ -30,25 +30,48 @@
 <div class="block">
     <v-container>
       
-    <h1 class="text-center">OUR TEAM</h1>
+ <v-layout class="pb-4 mb-6">
+   <v-flex >
+        <h1 class="team">OUR TEAM</h1>
     
-  <v-row  >
-    <v-col cols="4" 
+   </v-flex>
+ </v-layout>
+    
+  <v-row  class="flex fill-height ">
+    <v-col cols="12" sm="4"
     v-for="category in categories"
     :key="category.id">
-      <v-card flat class="mx-auto" >
-  
-    <v-img
-      class="white--text align-end"
+      <v-hover>
+        <v-card flat 
+        slot-scope="{ hover }">
+ 
+    <v-img 
+      class="white--text align-end rounded-circle "
       :src="category.src"
      
-    ></v-img>
+    >
+ 
+    </v-img>
+               <v-expand-transition>
+          <div
+            v-if="hover"
+            class="d-flex transition-fast-in-fast-out justify-center display-1 white--text fill-height"
+            style="height: 100%;"
+          >
+                       <v-card-actions >
+                 <v-btn class="yellow "><v-icon size="24px" class="dark-gray" left>mdi-email</v-icon>Send Mail</v-btn>
+              </v-card-actions>
+        
+          </div>
+        </v-expand-transition>
               <v-card-text class="text--primary">
                 <p class="text-center bold text-uppercase">{{category.title}}</p>
-                  <p class="text-center bold">{{category.description}}</p>
+                  <p class="text-center bold">  {{category.description}}</p>
               </v-card-text>
+
           
           </v-card>
+      </v-hover>
             </v-col>
           </v-row>
     </v-container>
@@ -56,7 +79,7 @@
      
 
 
-</v-content>
+</v-flex>
 
 </template>
 
@@ -84,6 +107,7 @@
             description: "Project Manager",
             src:require("../assets/icone team.png")
           },
+         
           
         ]
       };
@@ -91,3 +115,17 @@
     
   };
 </script>
+<style>
+.team{
+    text-align: center;
+  text-justify: auto;
+  font-family: Lobster Two,cursive;
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 40px
+
+};
+
+
+
+</style>

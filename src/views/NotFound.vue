@@ -1,16 +1,16 @@
 <template>
-<Aside></Aside>
+<Yo></Yo>
    
 
 </template>
 
 <script>
 // @ is an alias to /src
-import Aside from '../components/Aside'
+import Yo from '../components/Yo'
 export default {
   name: 'NotFound',
   components: {
-Aside,
+Yo,
   }
 }
 </script>

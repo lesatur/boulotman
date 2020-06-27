@@ -12,7 +12,7 @@
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down   ">
        <router-link to="/">Home</router-link>
-      <router-link to="/around" >autour de moi</router-link>
+      <router-link to="/allservices" >SERVICES</router-link>
        <router-link to="/about">ABOUT US</router-link>
        <router-link to="/categories">CATEGORIES</router-link>
        <router-link to="/about">Blog</router-link>

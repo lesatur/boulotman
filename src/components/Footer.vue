@@ -1,14 +1,14 @@
 <template>
 
-   <v-container fluid  >
+   <v-container fluid class="brown " >
           <v-row no-gutters 
               
-              class="flex  fill-height dark-gray"
+              class="flex  fill-height "
               
            >
-        <v-col cols="3" class="flex" >
+        <v-col cols="3" class="flex " >
           <v-card
-            class="pa-0"
+            class="pa-0 brown "
             
             tile
             flat
@@ -27,7 +27,7 @@
         </v-col>
         <v-col cols="3"  class="flex">
           <v-card
-            class="pa-0"
+            class="pa-0 brown"
             flat
             tile
          
@@ -45,9 +45,9 @@
 
         </v-col>
 
-        <v-col cols="3" class="flex">
+        <v-col cols="3" class="flex ">
           <v-card
-            class="mx-auto "
+            class="mx-auto brown"
           flat
             tile
              
@@ -61,6 +61,7 @@
            <p class="v-list-item--link"><v-icon size="24px" left>mdi-electron-framework</v-icon>Services</p>
            <p class="v-list-item--link"><v-icon size="24px" left>mdi-book-open</v-icon>Terms & Conditions</p>
            
+           
     </v-list-item-group>
        
         
@@ -69,9 +70,9 @@
           </v-card>
           
         </v-col>
-        <v-col cols=3  class="flex">
+        <v-col cols=3  class="flex " >
           <v-card
-            class="pa-0"
+            class="pa-0 brown"
             flat
             tile
            
@@ -91,12 +92,12 @@
       <v-row   class="flex  fill-height">
           <v-col cols="12" class="flex- ">
           <v-card
-            class=" ma-0 pa-0 "
+            class=" ma-0 pa-0 teal "
             flat
             tile
            
           >
-       <v-card-text class="text-center cyan lighten-4"><h2 class="text-decoration-underline">{{ new Date().getFullYear() }} — 
+       <v-card-text class="text-center brown "><h2 class="text-decoration-underline">{{ new Date().getFullYear() }} — 
          <strong>All Rights Reserved</strong></h2></v-card-text>
          
         

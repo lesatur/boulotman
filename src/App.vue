@@ -1,10 +1,16 @@
 <template>
   <v-app >
-  <NavBar/>
+  
+    <NavBar/>
+ 
   <v-main >
 
-      <router-view></router-view>
+  
     
+        <router-view></router-view>
+    
+     
+
   </v-main>
   <v-footer >
     <Footer> </Footer>
@@ -22,7 +28,10 @@ import NavBar from './components/NavBar'
 
 export default {
   name: 'App',
-
+ 
+mounted(){
+ this.$store.dispatch('loadCategories')
+        },
   components: {
    
     Footer,
@@ -35,3 +44,6 @@ export default {
   }),
 };
 </script>
+<style>
+
+</style>
