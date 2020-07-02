@@ -5,11 +5,9 @@
  
   <v-main >
 
-  
-    
-        <router-view></router-view>
-    
-     
+       <v-slide-y-transition mode="out-in">
+          <router-view></router-view>
+       </v-slide-y-transition>
 
   </v-main>
   <v-footer >
@@ -28,10 +26,13 @@ import NavBar from './components/NavBar'
 
 export default {
   name: 'App',
- 
+
+  
 mounted(){
  this.$store.dispatch('loadCategories')
         },
+
+
   components: {
    
     Footer,

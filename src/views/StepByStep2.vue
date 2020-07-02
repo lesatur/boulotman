@@ -1,68 +1,99 @@
 <template>
   <div class="container">
+
     <article>
-      <header>
-        <div class="progress">
-          <div class="progress-step"
-          :class="{'active':index === activeStep}"
-          v-for="(step, index) in formSteps"
-          :key="'step'+index">
-            {{ index + 1 }}
-          </div>
-        </div>
-      </header>
-      <section :class="animation">
-        <h2>{{ formSteps[activeStep].title }}</h2>
-        <div class="input-fields">
-          <div class="input-container"
-          v-for="(field, index) in formSteps[activeStep].fields"
-          :key="'field'+index">
-            <input type="text" :class="{'wrong-input': !field.valid}" v-model="field.value" required>
-            <label class="input-label">{{ field.label }}</label>
-          </div>
-        </div>
-        <div class="actions">
-          <button v-if="activeStep +1 < formSteps.length -1" @click="checkFields">next</button>
-          <button v-if="activeStep +1 === formSteps.length -1" @click="checkFields">done</button>
-        </div>
-      </section>
+            <header>
+              <div class="progress">
+                <div class="progress-step"
+                :class="{'active':index === activeStep}"
+                v-for="(step, index) in formSteps"
+                :key="'step'+index">
+                  {{ index + 1 }}
+                </div>
+              </div>
+            </header>
+            <section :class="animation">
+      
+        <v-card class="flex fill-height">
+          <v-card-title> <h2>{{ formSteps[activeStep].title }}</h2></v-card-title>
+          <v-spacer></v-spacer>
+           <span id="error"></span>
+          <v-card-text  
+            v-for="(field, index) in formSteps[activeStep].fields"
+                :key="'field'+index" >
+               
+                <input type="radio"  :value="field.label" :id="field.label" v-model="selectedItem" :rules="rules">
+                <label :for="field.label" class="ma-4 pa-4" >{{ field.label }}</label>
+            </v-card-text>
+                <v-spacer></v-spacer>
+          <v-card-actions class=" ma-4 pa-6">
+            <v-btn v-if="activeStep +1 < formSteps.length" @click="checkFields3">next</v-btn>
+                <v-btn v-if="activeStep -1 <formSteps.length  " @click="checkFields2">previous</v-btn>
+                <v-btn v-if="activeStep +1 === formSteps.length +1" @click="checkFields">done</v-btn>
+          </v-card-actions>
+        </v-card>
+
+        </section>
     </article>
   </div>
 </template>
 
 <script>
+
   export default {
+    components:{
+     
+    },
+    computed: {
+    rules() {
+      return [
+        this.selectedItem.length > 0 || "At least one item should be selected"
+      ];
+    }
+    },
     data: () => {
       return {
+        forms:{
+          infos: ''
+        },
+         selectedItem: '',
         activeStep: 0,
         animation: 'animate-in',
         formSteps: [
           {
-            title: "HTML Quiz",
+            title: "what do you want to develop",
             fields: [
-              { label: "What does HTML stand for?", value: '', valid: true, pattern: /.+/ },
-              { label: "Who is making the Web standards?", value: '', valid: true, pattern: /.+/ },
-              { label: "Element for the largest heading?", value: '', valid: true, pattern: /.+/ }
+              { label: "buisness web app"  },
+              { label: "personnal web app" },
+           
             ]
           },
           {
-            title: "CSS Quiz",
+            title: "What is your budget",
             fields: [
-              { label: "What does CSS stand for?", value: '', valid: true, pattern: /.+/ },
-              { label: "HTML tag for an internal style sheet?", value: '', valid: true, pattern: /.+/ },
-              { label: "Property for the background color?", value: '', valid: true, pattern: /.+/ }
+              { label: "30.000", },
+              { label: "more than 30.000",},
+              
             ]
           },
           {
-            title: "Your data",
+            title: "do you have a domaine name ?",
             fields: [
-              { label: "Your first name?", value: '', valid: true, pattern: /.+/ },
-              { label: "Your last name?", value: '', valid: true, pattern: /.+/ },
-              { label: "Your email?", value: '', valid: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ }
+              { label: "no",  },
+              { label: "yes", },
+             
+            ]
+          },
+            {
+            title: "where do you live  ?",
+            fields: [
+              { label: "dla",   },
+              { label: "yde" },
+             
             ]
           },
           {
-            title: "Thank you for participating!",
+            title: "Thank you for participating! please fill the form that follow to provide your personnal information ",
           }
         ],
       }
@@ -75,33 +106,63 @@
           this.activeStep += 1;
         }, 550);
       },
+            previousStep() {
+        this.animation = 'animate-out';
+        setTimeout(() => {
+          this.animation = 'animate-out';
+          this.activeStep -= 1;
+        }, 550);
+      },
+   
       checkFields() {
+          this.nextStep();
+        },
+        checkFields2()
+        {
+          this.previousStep();
+        },
+
+        checkFields3(){
         let valid = true;
-        this.formSteps[this.activeStep].fields.forEach(field => {
-          if(!field.pattern.test(field.value)) {
+         let error = document.getElementById("error")
+        this.formSteps[this.activeStep].fields.forEach(formSteps => {
+          if(!this.selectedItem) {
+            
+             
             valid = false;
-            field.valid = false;
+            formSteps.valid = false;
           }
           else {
-            field.valid = true;
+            formSteps.valid = true;
+           
           }
         });
         if(valid) {
           this.nextStep();
+          this.selectedItem = ''
+            error.textContent = "";
+          
         }
         else {
           this.animation = 'animate-wrong';
+            error.textContent = "At least one item should be selected"; 
+            error.style.color = "red"
           setTimeout(() => {
             this.animation = '';
           }, 400);
+          
         }
-      }
+       
+        
+        }
     }
-  }
+          
+          
+    }
 </script>
 
 <style lang="scss" scoped>
-  @import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
+   @import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
   @mixin flexbox() {
     display: flex;
     justify-content: center;
@@ -141,7 +202,7 @@
       background-color: #DF5C2E;
       font-weight: bold;
       &.active {
-        background-color: #DF5C2E;
+        background-color: blue;
         ~ .progress-step {
           color: #555;
           background-color: #ccc;

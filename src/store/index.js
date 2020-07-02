@@ -8,39 +8,49 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
    categories:[],
-   services: [],
-   formStep: [
-
-   ]
+   allservices:[],
+   questionHelper:[],
+  
   },
   mutations: {
    SET_CATEGORIES(state, categories){
      state.categories = categories;
     },
 
-    SET_SERVICES(state, services){
-      state.services = services;
+     SET_ALL_SERVICES(state, allservices){
+      state.allservices = allservices;
+     },
+     QUESTION_HELPER(state, questions){
+      state.questions = questions;
      },
 
   },
   actions: {
     async loadCategories({commit}){
       let response = await Api.get('/categories');
-      let categories = response.data
-      commit('SET_CATEGORIES', categories );
-     
-
-  },
-  async loadServices({commit}){
-    let response = await Api.get('/categories');
-    let services = response.data.map(v => v.services)
-    commit('SET_SERVICES', services);
-  
-}
-},
-  getters: {
+      let categories = response.data;
+      let services = categories
+      
     
+
+      commit('SET_CATEGORIES', categories )
+      commit('SET_SERVICES', services )
+    
+     
   },
+  async loadAllServices({commit}){
+    let response = await Api.get('/services');
+    let allservices = response.data
+    commit('SET_ALL_SERVICES', allservices )
+  
+},
+
+},
+  
+getTodoById: (state) => (id) => {
+  return state.categories.find(todo => todo.id === id)},
+
+
   modules: {
   }
 })

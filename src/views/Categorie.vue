@@ -1,62 +1,89 @@
 <template>
-
-  <v-container fluid>
-          <v-row 
-              
-              class="flex  justify-space-between green "
-              
-           >
-        <v-col cols="3" >
-          <v-card
-            class="pa-0 ma-0"
-            color="red"
-            tile
-            flat
-           height="300"
-           
-          >
-            <v-img
-          alt="boulotman Logo"
-          
-          contain
-          src="../assets/anytime-header.jpg" 
-          transition="scale-transition"
-           width="500"
-            height="300"
-    />
-          </v-card>
-        </v-col>
-        
-      <v-col cols="8" >
-          <v-card
-            class="pa-0 blue"
-            height="300"
-            tile
-            flat
-           
-          >
-    <div class="row">
-         <v-card-text class="display-1  text-center ">
-        <p>Experience our home services and we bet you that you will experience your dream home.</p>
-    </v-card-text>
-          <v-row align="end" class="lightbox white--text pa-2 fill-height">
-            <v-col>
-                
-                <div class="text-center white--text">
-                   <v-btn rounded class="blue lighten-2"><router-link to="/contact" >Contact US</router-link></v-btn>
-                </div>       
-            </v-col>
-          </v-row>
-   
-  </div>
-          </v-card>
-        </v-col>
-          </v-row>
-  </v-container>
+<v-layout>
+  <v-container>
   
+      <v-row>
+        <v-col cols="12">
+          <div class="flex justify-center"
+          >
+         
+         <h1 class="categories"> CATEGORIES</h1>
+          </div>
+        </v-col>
+    </v-row>
+  <v-spacer></v-spacer>
+  
+    <v-layout class="justify-space-between flex">
+      <v-flex >
+        <v-row dense>
+            
+    <v-col  cols="4"
+    v-for="categorie in categories"
+    :key="categorie.id">
+      <v-card outlined shaped class="mx-auto">
+  
+    <v-img
+      class="align-center"
+      :src="categorie.image"
+      height="190px"
+    ></v-img>
+              <v-card-text class="text-center">
+                <p><strong>{{categorie.name}}</strong></p>
+                <p>{{categorie.services_count}} services </p>
+                  <p>{{categorie.description}}</p>
+              </v-card-text>
+              <v-card-actions>
+                <div class="text-center mx-auto">
+                  
+                  <router-link :to="{name: 'categories', params:{id:categorie.id}}">
+                    <v-btn rounded color="teal accent-3" >EXPLORE</v-btn>
+                    </router-link>
+                </div>
+              </v-card-actions>
+          </v-card>
+            </v-col>
+          
+          </v-row>
+      </v-flex>
+
+    </v-layout>
+ 
+  
+ 
+</v-container>
+</v-layout>
 
 </template>
 
 <script>
+
+
+  export default {
+    name:'Categories',
  
+
+computed: {
+  categories(){
+    return this.$store.state.categories
+  }
+},
+
+methods:{
+
+
+  },
+
+
+    
+  };
 </script>
+<style >
+.categories{
+  text-align: center;
+  text-justify: auto;
+  font-family: Lobster Two,cursive;
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 40px
+}
+</style>

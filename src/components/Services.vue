@@ -37,7 +37,7 @@
 
 <script>
   export default {
-    props: [id],
+  
     name:'Services',
     data: () => ({
       show: false,

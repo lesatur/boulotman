@@ -28,6 +28,7 @@
     ></v-img>
               <v-card-text class="text-center">
                 <p><strong>{{categorie.name}}</strong></p>
+                <p>{{categorie.services_count}} services </p>
                   <p>{{categorie.description}}</p>
               </v-card-text>
               <v-card-actions>
@@ -58,9 +59,8 @@
 
   export default {
     name:'Categories',
-mounted(){
- this.$store.dispatch('loadCategories')
-        },
+ 
+
 computed: {
   categories(){
     return this.$store.state.categories

@@ -2,7 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Services from '../views/Services.vue'
+import Requirement from '../views/Requirement.vue'
 import AllServices from '../views/AllServices.vue'
+import StepByStep2 from '../views/StepByStep2.vue'
 
 
 
@@ -19,17 +21,41 @@ Vue.use(VueRouter)
     path: '/categories/:id',
     name: 'categories',
     component: Services,
-    params: true
+    params: true,
+    children:[
+      
+    ]
    
   },
   {
-    path: '/allservices',
-    name: 'allservices',
+    path: '/services',
+    name: 'services',
     component: AllServices,
-   
    
   },
 
+  {
+    path: '/step',
+    name: 'step',
+    component: Requirement,
+    params: true,
+   
+  },
+
+  {
+    path: '/service/:id',
+    name: 'service',
+    component: Requirement,
+    params:true
+   
+  },
+  {
+    path: '/requirements',
+    name: 'requirements',
+    component: StepByStep2,
+    params:true
+   
+  },
   {
     path: '/contact',
     name: 'autour',

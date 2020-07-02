@@ -24,7 +24,7 @@
 
         <v-btn
           color="primary"
-          @click="next"
+          @click.prevent="next"
         >
           Continue
         </v-btn>
@@ -41,13 +41,13 @@
 
         <v-btn
           color="primary"
-          @click="next"
+          @click.prevent="next"
         >
           Continue
         </v-btn>
         <v-btn
           color="primary"
-          @click="previous"
+          @click.prevent="previous"
         >
          previous
         </v-btn>
@@ -55,6 +55,7 @@
         <v-dialog
       v-model="dialog"
       max-width="390"
+      persistent
     >
       <v-card >
         <v-card-title class="justify-center">go back to the home page?</v-card-title>
@@ -103,7 +104,7 @@
         <v-spacer></v-spacer>
       <v-btn
           color="primary"
-          @click="previous"
+          @click.prevent="previous"
         >
          previous
         </v-btn>
@@ -131,7 +132,7 @@
     },
       previous(){
    
-        this.step -= 1
+        this.step -=1
       }
     
   }

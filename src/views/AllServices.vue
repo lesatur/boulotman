@@ -3,29 +3,30 @@
  
    
         <v-flex>
-          
-    
+  
+    <h1>ALL THE AVAILLABLE SERVICES</h1>
          <v-row dense >
     <v-col cols="3" 
-    v-for="service in services"
-    :key="service.id">
+    v-for="allservice in allservices"
+    :key="allservice.id"
+    >
       <v-card outlined shaped class="mx-auto">
   
-  {{service.name}}
+  
     <v-img
       class="align-center"
-      :src="service.image"
+      :src="allservice.image"
       height="190px"
     ></v-img>
 
               <v-card-text class="text-center">
-                
-                  {{service.description}}
+                <p><strong>{{allservice.name}}</strong></p>
+                  {{allservice.description}}
               </v-card-text>
               <v-card-actions>
                 <div class="text-center mx-auto">
                   
-                  <router-link :to="{name: '/services', params:{id:service.id}}">
+             <router-link :to="{name: 'service', params:{id:allservice.name}}">
                     <v-btn rounded color="teal accent-3" >Get Service</v-btn>
                     </router-link>
                 </div>
@@ -44,16 +45,16 @@
   export default {
     name:'AllServices',
 mounted(){
- this.$store.dispatch('loadServices')
+ this.$store.dispatch('loadAllServices')
         },
 computed:{
-        services(){
-            return this.$store.state.services  
-        }
-    },
+        allservices(){
+            return this.$store.state.allservices  
+        },
 
+     
 }
-
+  }
   
 </script>
 <style scoped>
