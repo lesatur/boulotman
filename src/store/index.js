@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Api from '../service/api'
+import data from '../service/service.json'
 
 
 Vue.use(Vuex)
@@ -8,7 +8,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
    categories:[],
-   allservices:[],
+   services:[],
    questionHelper:[],
   
   },
@@ -17,40 +17,23 @@ export default new Vuex.Store({
      state.categories = categories;
     },
 
-     SET_ALL_SERVICES(state, allservices){
-      state.allservices = allservices;
+     SET_ALL_SERVICES(state, services){
+      state.services = services;
      },
      QUESTION_HELPER(state, questions){
       state.questions = questions;
      },
 
   },
-  actions: {
-    async loadCategories({commit}){
-      let response = await Api.get('/categories');
-      let categories = response.data;
-      let services = categories
-      
-    
-
-      commit('SET_CATEGORIES', categories )
-      commit('SET_SERVICES', services )
-    
-     
+  getters:{
+    subServiceDataOfService: state => id => {
+      return state.services.find(key => key.name == id);
+    }
   },
-  async loadAllServices({commit}){
-    let response = await Api.get('/services');
-    let allservices = response.data
-    commit('SET_ALL_SERVICES', allservices )
-  
-},
+  actions: {
+  async loadCategories({commit}){
+    commit('SET_ALL_SERVICES', data)
+  },
 
-},
-  
-getTodoById: (state) => (id) => {
-  return state.categories.find(todo => todo.id === id)},
-
-
-  modules: {
-  }
+}
 })
